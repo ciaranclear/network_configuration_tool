@@ -1,0 +1,120 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#vlan 2
+S1(config-vlan)#name group2
+S1(config-vlan)#exit
+S1(config)#vlan 3
+S1(config-vlan)#name group3
+S1(config-vlan)#exit
+S1(config)#vlan 4
+S1(config-vlan)#name group4
+S1(config-vlan)#exit
+S1(config)#vlan 5
+S1(config-vlan)#name group5
+S1(config-vlan)#exit
+S1(config)#vlan 6
+S1(config-vlan)#name group6
+S1(config-vlan)#exit
+S1(config)#interface fastEthernet 0/1
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/2
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/3
+S1(config-if)#switchport access vlan 2
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/4
+S1(config-if)#switchport access vlan 2
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/5
+S1(config-if)#switchport access vlan 3
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/6
+S1(config-if)#switchport access vlan 3
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/7
+S1(config-if)#switchport access vlan 4
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/8
+S1(config-if)#switchport access vlan 4
+S1(config-if)#switchport mode access
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/9
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 5
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/10
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 5
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/11
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 6
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/12
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 6
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/13
+S1(config-if)#switchport trunk allowed vlan 1,2
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/14
+S1(config-if)#switchport trunk allowed vlan 1,2
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/15
+S1(config-if)#switchport trunk allowed vlan 3,4
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/16
+S1(config-if)#switchport trunk allowed vlan 3,4
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/17
+S1(config-if)#switchport trunk allowed vlan 5,6
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/18
+S1(config-if)#switchport trunk allowed vlan 5,6
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/19
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/20
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/21
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/22
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/23
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/24
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 1
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 2
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 3
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 4
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 5
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 6
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#
+S1(config)#end
+S1#

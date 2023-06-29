@@ -1,0 +1,359 @@
+{
+    "connection_data":{
+        "device":"cisco_switch",
+        "device_type":"cisco_ios",
+        "ip_address":"192.168.0.1",
+        "port":"22",
+        "username":"user",
+        "password":"admin",
+        "secret":null
+    },
+    "global":[
+        "vlan 2",
+        "name group2",
+        "exit",
+        "vlan 3",
+        "name group3",
+        "exit",
+        "vlan 4",
+        "name group4",
+        "exit",
+        "vlan 5",
+        "name group5",
+        "exit",
+        "vlan 6",
+        "name group6",
+        "exit"
+    ],
+    "interfaces":{
+        "f0/1":{
+            "iface_id":"0/1",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/2":{
+            "iface_id":"0/2",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/3":{
+            "iface_id":"0/3",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/4":{
+            "iface_id":"0/4",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/5":{
+            "iface_id":"0/5",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/6":{
+            "iface_id":"0/6",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/7":{
+            "iface_id":"0/7",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/8":{
+            "iface_id":"0/8",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/9":{
+            "iface_id":"0/9",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/10":{
+            "iface_id":"0/10",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/11":{
+            "iface_id":"0/11",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/12":{
+            "iface_id":"0/12",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/13":{
+            "iface_id":"0/13",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/14":{
+            "iface_id":"0/14",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/15":{
+            "iface_id":"0/15",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/16":{
+            "iface_id":"0/16",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/17":{
+            "iface_id":"0/17",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/18":{
+            "iface_id":"0/18",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/19":{
+            "iface_id":"0/19",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/20":{
+            "iface_id":"0/20",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/21":{
+            "iface_id":"0/21",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/22":{
+            "iface_id":"0/22",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/23":{
+            "iface_id":"0/23",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "f0/24":{
+            "iface_id":"0/24",
+            "iface_type":"fastEthernet",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan1":{
+            "iface_type":"vlan",
+            "iface_id":"1",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan2":{
+            "iface_type":"vlan",
+            "iface_id":"2",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan3":{
+            "iface_type":"vlan",
+            "iface_id":"3",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan4":{
+            "iface_type":"vlan",
+            "iface_id":"4",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan5":{
+            "iface_type":"vlan",
+            "iface_id":"5",
+            "lines":[
+                "no shutdown"
+            ]
+        },
+        "vlan6":{
+            "iface_type":"vlan",
+            "iface_id":"6",
+            "lines":[
+                "no shutdown"
+            ]
+        }
+    },
+    "arp_inspection":{
+        "global":[],
+        "interfaces":{}
+    },
+    "dhcp_snooping":{
+        "global":[],
+        "interfaces":{}
+    },
+    "port_security":{
+        "global":[],
+        "interfaces":{}
+    },
+    "spanning_tree":{
+        "global":[],
+        "interfaces":{}
+    },
+    "access":{
+        "global":[],
+        "interfaces":{
+            "f0/3":[
+                "switchport mode access",
+                "switchport access vlan 2"
+            ],
+            "f0/4":[
+                "switchport mode access",
+                "switchport access vlan 2"
+            ],
+            "f0/5":[
+                "switchport mode access",
+                "switchport access vlan 3"
+            ],
+            "f0/6":[
+                "switchport mode access",
+                "switchport access vlan 3"
+            ],
+            "f0/7":[
+                "switchport mode access",
+                "switchport access vlan 4"
+            ],
+            "f0/8":[
+                "switchport mode access",
+                "switchport access vlan 4"
+            ],
+            "f0/9":[
+                "switchport mode access",
+                "switchport access vlan 5"
+            ],
+            "f0/10":[
+                "switchport mode access",
+                "switchport access vlan 5"
+            ],
+            "f0/11":[
+                "switchport mode access",
+                "switchport access vlan 6"
+            ],
+            "f0/12":[
+                "switchport mode access",
+                "switchport access vlan 6"
+            ]
+        }
+    },
+    "trunk":{
+        "global":[],
+        "interfaces":{
+            "f0/13":[
+                "switchport trunk allowed vlan 1,2"
+            ],
+            "f0/14":[
+                "switchport trunk allowed vlan 1,2"
+            ],
+            "f0/15":[
+                "switchport trunk allowed vlan 3,4"
+            ],
+            "f0/16":[
+                "switchport trunk allowed vlan 3,4"
+            ],
+            "f0/17":[
+                "switchport trunk allowed vlan 5,6"
+            ],
+            "f0/18":[
+                "switchport trunk allowed vlan 5,6"
+            ]
+        }
+    },
+    "vlans":{
+        "global":[],
+        "interfaces":{
+            "vlan1":[
+                "no shutdown"
+            ],
+            "vlan2":[
+                "no shutdown"
+            ],
+            "vlan3":[
+                "no shutdown"
+            ],
+            "vlan4":[
+                "no shutdown"
+            ],
+            "vlan5":[
+                "no shutdown"
+            ],
+            "vlan6":[
+                "no shutdown"
+            ]
+        }
+    },
+    "ntp":{
+        "global":[],
+        "interfaces":{}
+    },
+    "cdp":{
+        "global":[],
+        "interfaces":{}
+    },
+    "lldp":{
+        "global":[],
+        "interfaces":{}
+    }
+}

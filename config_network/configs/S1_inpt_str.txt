@@ -1,0 +1,115 @@
+vlan 2
+name group2
+exit
+vlan 3
+name group3
+exit
+vlan 4
+name group4
+exit
+vlan 5
+name group5
+exit
+vlan 6
+name group6
+exit
+interface fastEthernet 0/1
+no shutdown
+exit
+interface fastEthernet 0/2
+no shutdown
+exit
+interface fastEthernet 0/3
+switchport access vlan 2
+switchport mode access
+exit
+interface fastEthernet 0/4
+switchport access vlan 2
+switchport mode access
+exit
+interface fastEthernet 0/5
+switchport access vlan 3
+switchport mode access
+exit
+interface fastEthernet 0/6
+switchport access vlan 3
+switchport mode access
+exit
+interface fastEthernet 0/7
+switchport access vlan 4
+switchport mode access
+exit
+interface fastEthernet 0/8
+switchport access vlan 4
+switchport mode access
+exit
+interface fastEthernet 0/9
+switchport mode access
+switchport access vlan 5
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 5
+exit
+interface fastEthernet 0/11
+switchport mode access
+switchport access vlan 6
+exit
+interface fastEthernet 0/12
+switchport mode access
+switchport access vlan 6
+exit
+interface fastEthernet 0/13
+switchport trunk allowed vlan 1,2
+exit
+interface fastEthernet 0/14
+switchport trunk allowed vlan 1,2
+exit
+interface fastEthernet 0/15
+switchport trunk allowed vlan 3,4
+exit
+interface fastEthernet 0/16
+switchport trunk allowed vlan 3,4
+exit
+interface fastEthernet 0/17
+switchport trunk allowed vlan 5,6
+exit
+interface fastEthernet 0/18
+switchport trunk allowed vlan 5,6
+exit
+interface fastEthernet 0/19
+no shutdown
+exit
+interface fastEthernet 0/20
+no shutdown
+exit
+interface fastEthernet 0/21
+no shutdown
+exit
+interface fastEthernet 0/22
+no shutdown
+exit
+interface fastEthernet 0/23
+no shutdown
+exit
+interface fastEthernet 0/24
+no shutdown
+exit
+interface vlan 1
+no shutdown
+exit
+interface vlan 2
+no shutdown
+exit
+interface vlan 3
+no shutdown
+exit
+interface vlan 4
+no shutdown
+exit
+interface vlan 5
+no shutdown
+exit
+interface vlan 6
+no shutdown
+exit

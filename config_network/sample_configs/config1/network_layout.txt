@@ -1,0 +1,73 @@
+
+
+
+
+                                     192.168.1.0/24
+                                F0/1                F0/0
+                              R1------------------------R2
+                         F0/0 |                          | F0/1
+                              |                          |
+               192.168.0.0/24 |                          | 192.168.2.0/24
+                              |                          |
+                         F0/1 |                          | F0/1
+                              S1                        S2
+
+	INTERFACE	IP_ADDRESS	SUBNET_MASK		VLAN
+S1	F0/1		192.168.0.1	255.255.255.0		1
+
+S2	F0/1		192.168.2.1	255.255.255.0		1
+
+R1	F0/0		192.168.0.2	255.255.255.0		N/A
+	F0/1		192.168.1.1	255.255.255.0		N/A
+
+R2	F0/0		192.168.1.2	255.255.255.0		N/A
+	F0/1		192.168.2.2	255.255.255.0		N/A
+
+
+########## PRECONFIGURATION ##########
+
+S1: vlan 1 ip address 192.168.0.1/24
+    hostname S1
+    ip domain name cisco.com
+    crypto key generate rsa
+    ip ssh version 2
+    username ciaran privilege 15 password admin
+    line vty 0 4
+    login local
+    no password
+    transport input ssh
+
+S2: vlan 1 ip address 192.168.2.1/24
+    hostname S2
+    ip domain name cisco.com
+    crypto key generate rsa
+    ip ssh version 2
+    username ciaran privilege 15 password admin  
+    line vty 0 4
+    login local
+    no password
+    transport input ssh
+
+R1: F0/0 ip address 192.168.0.2/24
+    F0/1 ip address 192.168.1.1/24
+    hostname R1
+    ip domain name cisco.com
+    crypto key generate rsa
+    ip ssh version 2
+    username ciaran privilege 15 password admin  
+    line vty 0 4
+    login local
+    no password
+    transport input ssh
+
+R2: F0/0 ip address 192.168.1.2/24
+    F0/1 ip address 192.168.2.2/24
+    hostname R2
+    ip domain name cisco.com
+    crypto key generate rsa
+    ip ssh version 2
+    username ciaran privilege 15 password admin  
+    line vty 0 4
+    login local
+    no password
+    transport input ssh
