@@ -35,17 +35,96 @@ def get_interfaces_string(config_str, config_data):
     # get interfaces lines
     if "interfaces" in config_data.keys():
         interfaces = config_data["interfaces"]
+        # get before ranges in interfaces
+        if "ranges" in interfaces.keys():
+            ranges = interfaces["ranges"]
+            for range_obj in ranges:
+                if "mode" in range_obj.keys() and range_obj["mode"] == "before":
+                    iface_type = range_obj["iface_type"]
+                    iface_name_prefix = range_obj["iface_name_prefix"]
+                    iface_ids = range_obj["iface_ids"]
+                    lines = range_obj["lines"]
+                    for id in iface_ids:
+                        iface_name = f"{iface_name_prefix}{id}"
+                        if iface_name not in interfaces_dict.keys():
+                            interfaces_dict[iface_name] = {
+                                "iface_type":iface_type,
+                                "iface_id":id,
+                                "lines":lines
+                            }
+                        elif iface_name in interfaces_dict.keys():
+                            for line in lines:
+                                interfaces_dict[iface_name]["lines"].append(line)
 
         for iface_name, interface in interfaces.items():
-            interfaces_dict[iface_name] = interface
+            if iface_name != "ranges":
+                if iface_name not in interfaces_dict.keys():
+                    interfaces_dict[iface_name] = interface
+                elif iface_name in interfaces_dict.keys():
+                    lines = interface["lines"]
+                    for line in lines:
+                        interfaces_dict[iface_name]["lines"].append(line)
+
+        # get after ranges in interfaces
+        if "ranges" in interfaces.keys():
+            ranges = interfaces["ranges"]
+            for range_obj in ranges:
+                if ("mode" in range_obj.keys() and range_obj["mode"] == "before") or \
+                   ("mode" not in range_obj.keys()):
+                    iface_type = range_obj["iface_type"]
+                    iface_name_prefix = range_obj["iface_name_prefix"]
+                    iface_ids = range_obj["iface_ids"]
+                    lines = range_obj["lines"]
+                    for id in iface_ids:
+                        iface_name = f"{iface_name_prefix}{id}"
+                        if iface_name not in interfaces_dict.keys():
+                            interfaces_dict[iface_name] = {
+                                "iface_type":iface_type,
+                                "iface_id":id,
+                                "lines":lines
+                            }
+                        elif iface_name in interfaces_dict.keys():
+                            for line in lines:
+                                interfaces_dict[iface_name]["lines"].append(line)
 
     # get interfaces lines for each protocol
     for k, v in config_data.items():
         if k not in ["global","interfaces","connection_data"]:
             if "interfaces" in v.keys():
                 interfaces = v["interfaces"]
+                # get before ranges in each protocol
+                if "ranges" in interfaces.keys():
+                    ranges = interfaces["ranges"]
+                    for range_obj in ranges:
+                        if "mode" in range_obj.keys() and range_obj["mode"] == "before":
+                            iface_type = range_obj["iface_type"]
+                            iface_name_prefix = range_obj["iface_name_prefix"]
+                            iface_ids = range_obj["iface_ids"]
+                            lines = range_obj["lines"]
+                            for id in iface_ids:
+                                iface_name = f"{iface_name_prefix}{id}"
+                                for line in lines:
+                                    interfaces_dict[iface_name]["lines"].append(line)        
+
                 for iface_name, lines in interfaces.items():
-                    interfaces_dict[iface_name]["lines"] = lines
+                    if iface_name != "ranges":
+                        for line in lines:
+                            interfaces_dict[iface_name]["lines"].append(line)
+
+                # get after ranges in each protocol
+                if "ranges" in interfaces.keys():
+                    ranges = interfaces["ranges"]
+                    for range_obj in ranges:
+                        if ("mode" in range_obj.keys() and range_obj["mode"] == "before") or \
+                           ("mode" not in range_obj.keys()):
+                            iface_type = range_obj["iface_type"]
+                            iface_name_prefix = range_obj["iface_name_prefix"]
+                            iface_ids = range_obj["iface_ids"]
+                            lines = range_obj["lines"]
+                            for id in iface_ids:
+                                iface_name = f"{iface_name_prefix}{id}"
+                                for line in lines:
+                                    interfaces_dict[iface_name]["lines"].append(line) 
 
     # concat interfaces config string
     for iface_name, interface in interfaces_dict.items():

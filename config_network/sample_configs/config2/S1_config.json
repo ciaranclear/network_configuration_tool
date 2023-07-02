@@ -1,0 +1,151 @@
+{
+    "connection_data":{
+        "device":"cisco_switch",
+        "device_type":"cisco_ios",
+        "ip_address":"192.168.0.1",
+        "port":"22",
+        "username":"boson",
+        "password":"boson",
+        "secret":null
+    },
+    "global":[],
+    "interfaces":{
+        "vlan1":{
+            "iface_type":"vlan",
+            "iface_id":"1",
+            "lines":[]
+        },
+        "vlan10":{
+            "iface_type":"vlan",
+            "iface_id":"10",
+            "lines":[]
+        },
+        "vlan20":{
+            "iface_type":"vlan",
+            "iface_id":"20",
+            "lines":[]
+        },
+        "vlan30":{
+            "iface_type":"vlan",
+            "iface_id":"30",
+            "lines":[]
+        },
+        "vlan40":{
+            "iface_type":"vlan",
+            "iface_id":"40",
+            "lines":[]
+        },
+        "ranges":[
+            {
+                "iface_type":"fastEthernet",
+                "iface_name_prefix":"f",
+                "iface_ids":[
+                    "0/1","0/2","0/3","0/4","0/5","0/6",
+                    "0/7","0/8","0/9","0/10","0/11","0/12",
+                    "0/13","0/14","0/15","0/16","0/17","0/18",
+                    "0/19","0/20","0/21","0/22","0/23","0/24"
+                ],
+                "lines":[]
+            }
+        ]
+    },
+    "spanning_tree":{
+        "global":[
+            "spanning-tree mode pvst",
+            "spanning-tree vlan 10,20 root primary",
+            "spanning-tree vlan 30,40 root secondary"
+        ],
+        "interfaces":{}
+    },
+    "port_security":{
+        "global":[],
+        "interfaces":{}
+    },
+    "access":{
+        "interfaces":{
+            "ranges":[
+                {
+                    "iface_type":"fastEthernet",
+                    "iface_name_prefix":"f",
+                    "iface_ids":[
+                        "0/5","0/6","0/7","0/8"
+                    ],
+                    "lines":[
+                        "switchport mode access",
+                        "switchport access vlan 10"
+                    ]
+                },
+                {
+                    "iface_type":"fastEthernet",
+                    "iface_name_prefix":"f",
+                    "iface_ids":[
+                        "0/9","0/10","0/11","0/12"
+                    ],
+                    "lines":[
+                        "switchport mode access",
+                        "switchport access valn 20"
+                    ]
+                },
+                {
+                    "iface_type":"fastEthernet",
+                    "iface_name_prefix":"f",
+                    "iface_ids":[
+                        "0/13","0/14","0/15","0/16"
+                    ],
+                    "lines":[
+                        "switchport mode access",
+                        "switchport access valn 30"
+                    ]
+                },
+                {
+                    "iface_type":"fastEthernet",
+                    "iface_name_prefix":"f",
+                    "iface_ids":[
+                        "0/17","0/18","0/19","0/20"
+                    ],
+                    "lines":[
+                        "switchport mode access",
+                        "switchport access valn 40"
+                    ]
+                }
+            ]
+        }
+    },
+    "trunk":{
+        "interfaces":{
+            "f0/1":[
+                "switchport mode trunk",
+                "switchport trunk allowed vlan 10,20,30,40"
+            ]
+        }
+    },
+    "vlans":{
+        "global":[
+            "vtp mode transparent"
+        ],
+        "interfaces":{
+            "vlan10":[
+                "ip address 192.168.0.97 255.255.255.240",
+                "no shutdown"
+            ],
+            "vlan20":[
+                "ip address 192.168.0.113 255.255.255.240",
+                "no shutdown"
+            ],
+            "vlan30":[
+                "ip address 192.168.0.129 255.255.255.240",
+                "no shutdown"
+            ],
+            "vlan40":[
+                "ip address 192.168.0.145 255.255.255.240",
+                "no shutdown"
+            ]
+        }
+    },
+    "hsrp":{
+        "global":[],
+        "interfaces":{
+
+        }
+    }
+}

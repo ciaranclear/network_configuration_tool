@@ -1,0 +1,67 @@
+{
+    "connection_data":{
+        "device":"cisco_router",
+        "device_type":"cisco_ios",
+        "ip_address":"192.168.0.165",
+        "port":"22",
+        "username":"boson",
+        "password":"boson",
+        "secret":null
+    },
+    "global":[
+        "router ospf 1",
+        "network 192.168.0.96 255.255.255.240",
+        "network 192.168.0.112 255.255.255.240",
+        "network 192.168.0.128 255.255.255.240",
+        "network 192.168.0.144 255.255.255.240",
+        "exit"
+    ],
+    "interfaces":{
+        "f0/1.10":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/0.10",
+            "lines":[
+                "encapsulation dot1q 10",
+                "ip address 192.168.0.28 255.255.255.240",
+                "standby 10 ip 192.168.0.94 255.255.255.240",
+                "standby 10 preempt",
+                "no shutdown"
+            ]
+        },
+        "f0/1.20":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/0.20",
+            "lines":[
+                "encapsulation dot1q 20",
+                "ip address 192.168.0.44 255.255.255.240",
+                "standby 20 ip 192.168.0.110 255.255.255.240",
+                "standby 20 preempt",
+                "no shutdown"
+            ]
+        },
+        "f0/1.30":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/0.30",
+            "lines":[
+                "encapsulation dot1q 30",
+                "ip address 192.168.0.60 255.255.255.240",
+                "standby 30 ip 192.168.0.126 255.255.255.240",
+                "standby 30 preempt",
+                "standby 30 priority 115",
+                "no shutdown"
+            ]
+        },
+        "f0/1.40":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/0.40",
+            "lines":[
+                "encapsulation dot1q 40",
+                "ip address 192.168.0.76 255.255.255.240",
+                "standby 40 ip 192.168.0.142 255.255.255.240",
+                "standby 40 preempt",
+                "standby 40 priority 115",
+                "no shutdown"
+            ]
+        }
+    }
+}

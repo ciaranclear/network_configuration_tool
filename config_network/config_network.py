@@ -32,13 +32,14 @@ def config_network(argv=None):
 
         for device_name, filename in inventory_data.items():
             dirpath = os.path.dirname(args.inventory_filename)
+            print(filename)
             filepath = os.path.join(dirpath, filename)
 
             # get formatted configuration string
             with open(filepath, "r") as f:
                 config_data = json.loads(f.read())
                 config_string = get_config_string(config_data)
-
+                print(config_string)
                 # configure devices
                 print(f"CONFIGURING {device_name}")
                 conn_data = config_data["connection_data"]
