@@ -10,10 +10,10 @@
     },
     "global":[
         "router ospf 1",
-        "network 192.168.0.16 255.255.255.240",
-        "network 192.168.0.32 255.255.255.240",
-        "network 192.168.0.48 255.255.255.240",
-        "network 192.168.0.64 255.255.255.240",
+        "network 192.168.0.16 255.255.255.240 area 0",
+        "network 192.168.0.32 255.255.255.240 area 0",
+        "network 192.168.0.48 255.255.255.240 area 0",
+        "network 192.168.0.64 255.255.255.240 area 0",
         "exit"
     ],
     "interfaces":{
@@ -23,9 +23,6 @@
             "lines":[
                 "encapsulation dot1q 10",
                 "ip address 192.168.0.29 255.255.255.240",
-                "standby 10 ip 192.168.0.30 255.255.255.240",
-                "standby 10 preempt",
-                "standby 10 priority 115",
                 "no shutdown"
             ]
         },
@@ -35,9 +32,6 @@
             "lines":[
                 "encapsulation dot1q 20",
                 "ip address 192.168.0.45 255.255.255.240",
-                "standby 20 ip 192.168.0.46 255.255.255.240",
-                "standby 20 preempt",
-                "standby 20 priority 115",
                 "no shutdown"
             ]
         },
@@ -47,8 +41,6 @@
             "lines":[
                 "encapsulation dot1q 30",
                 "ip address 192.168.0.61 255.255.255.240",
-                "standby 30 ip 192.168.0.62 255.255.255.240",
-                "standby 30 preempt",
                 "no shutdown"
             ]
         },
@@ -58,8 +50,6 @@
             "lines":[
                 "encapsulation dot1q 40",
                 "ip address 192.168.0.77 255.255.255.240",
-                "standby 40 ip 192.168.0.78 255.255.255.240",
-                "standby 40 preempt",
                 "no shutdown"
             ]
         }

@@ -1,0 +1,31 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#router ospf 1
+R1(config-router)#network 192.168.0.16 255.255.255.240 area 0
+R1(config-router)#network 192.168.0.32 255.255.255.240 area 0
+R1(config-router)#network 192.168.0.48 255.255.255.240 area 0
+R1(config-router)#network 192.168.0.64 255.255.255.240 area 0
+R1(config-router)#exit
+R1(config)#interface fastEthernet 0/0.10
+R1(config-subif)#encapsulation dot1q 10
+R1(config-subif)#ip address 192.168.0.29 255.255.255.240
+R1(config-subif)#no shutdown
+R1(config-subif)#exit
+R1(config)#interface fastEthernet 0/0.20
+R1(config-subif)#encapsulation dot1q 20
+R1(config-subif)#ip address 192.168.0.45 255.255.255.240
+R1(config-subif)#no shutdown
+R1(config-subif)#exit
+R1(config)#interface fastEthernet 0/0.30
+R1(config-subif)#encapsulation dot1q 30
+R1(config-subif)#ip address 192.168.0.61 255.255.255.240
+R1(config-subif)#no shutdown
+R1(config-subif)#exit
+R1(config)#interface fastEthernet 0/0.40
+R1(config-subif)#encapsulation dot1q 40
+R1(config-subif)#ip address 192.168.0.77 255.255.255.240
+R1(config-subif)#no shutdown
+R1(config-subif)#exit
+R1(config)#
+R1(config)#end
+R1#

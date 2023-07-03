@@ -15,22 +15,22 @@
             "iface_id":"1",
             "lines":[]
         },
-        "vlan2":{
+        "vlan10":{
             "iface_type":"vlan",
             "iface_id":"10",
             "lines":[]
         },
-        "vlan3":{
+        "vlan20":{
             "iface_type":"vlan",
             "iface_id":"20",
             "lines":[]
         },
-        "vlan4":{
+        "vlan30":{
             "iface_type":"vlan",
             "iface_id":"30",
             "lines":[]
         },
-        "vlan5":{
+        "vlan40":{
             "iface_type":"vlan",
             "iface_id":"40",
             "lines":[]
@@ -83,7 +83,7 @@
                     ],
                     "lines":[
                         "switchport mode access",
-                        "switchport access valn 20"
+                        "switchport access vlan 20"
                     ]
                 },
                 {
@@ -94,7 +94,7 @@
                     ],
                     "lines":[
                         "switchport mode access",
-                        "switchport access valn 30"
+                        "switchport access vlan 30"
                     ]
                 },
                 {
@@ -105,7 +105,7 @@
                     ],
                     "lines":[
                         "switchport mode access",
-                        "switchport access valn 40"
+                        "switchport access vlan 40"
                     ]
                 }
             ]
@@ -114,7 +114,15 @@
     "trunk":{
         "interfaces":{
             "f0/1":[
+                "switchport trunk encapsulation dot1q",
                 "switchport mode trunk",
+                "switchport trunk native vlan 1",
+                "switchport trunk allowed vlan 10,20,30,40"
+            ],
+            "f0/2":[
+                "switchport trunk encapsulation dot1q",
+                "switchport mode trunk",
+                "switchport trunk native vlan 1",
                 "switchport trunk allowed vlan 10,20,30,40"
             ]
         }
@@ -125,19 +133,19 @@
         ],
         "interfaces":{
             "vlan10":[
-                "ip address 192.168.0.17 255.255.255.240",
+                "ip address 192.168.0.97 255.255.255.240",
                 "no shutdown"
             ],
             "vlan20":[
-                "ip address 192.168.0.33 255.255.255.240",
+                "ip address 192.168.0.113 255.255.255.240",
                 "no shutdown"
             ],
             "vlan30":[
-                "ip address 192.168.0.49 255.255.255.240",
+                "ip address 192.168.0.129 255.255.255.240",
                 "no shutdown"
             ],
             "vlan40":[
-                "ip address 192.168.0.65 255.255.255.240",
+                "ip address 192.168.0.145 255.255.255.240",
                 "no shutdown"
             ]
         }
