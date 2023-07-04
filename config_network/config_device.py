@@ -14,6 +14,8 @@ def config_device(conn_data, config_string):
                         username = conn_data["username"],
                         password = conn_data["password"],
                         secret = conn_data["secret"],
+                        fast_cli = False,
+                        read_timeout_override = 90,
                         device_type = conn_data["device_type"]) as ch:
 
         config_set = config_string.split("\n")

@@ -5,8 +5,6 @@ def get_global_string(config_str, config_data):
     lines = []
     lines = get_global_lines(lines, config_data)
     lines = get_protocol_global_lines(lines, config_data)
-    print("GLOBAL")
-    print(lines)
     for line in lines:
         config_str += f"{line}\n"
 
@@ -46,7 +44,6 @@ def get_interfaces_string(config_str, config_data):
     ifaces_dict = get_protocol_ifaces_lines(ifaces_dict, config_data)
     # protocol range lines after
     ifaces_dict = get_protocol_ranges_lines(ifaces_dict, config_data, "after")
-    pprint(ifaces_dict)
     for iface_name, iface in ifaces_dict.items():
         iface_type = iface["iface_type"]
         iface_id = iface["iface_id"]

@@ -2,6 +2,7 @@
     "connection_data":{
         "device":"cisco_router",
         "device_type":"cisco_ios",
+        "fast_cli":false,
         "ip_address":"192.168.0.161",
         "port":"22",
         "username":"boson",

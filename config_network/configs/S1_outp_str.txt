@@ -27,13 +27,13 @@ S1(config)#interface fastEthernet 0/1
 S1(config-if)#switchport trunk encapsulation dot1q
 S1(config-if)#switchport mode trunk
 S1(config-if)#switchport trunk native vlan 1
-S1(config-if)#switchport trunk allowed vlan 10,20,30,40
+S1(config-if)#switchport trunk allowed vlan 1,10,20,30,40
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/2
 S1(config-if)#switchport trunk encapsulation dot1q
 S1(config-if)#switchport mode trunk
 S1(config-if)#switchport trunk native vlan 1
-S1(config-if)#switchport trunk allowed vlan 10,20,30,40
+S1(config-if)#switchport trunk allowed vlan 1,10,20,30,40
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/3
 S1(config-if)#exit
@@ -42,7 +42,6 @@ S1(config-if)#exit
 S1(config)#interface fastEthernet 0/5
 S1(config-if)#switchport mode access
 S1(config-if)#switchport access vlan 10
-% Access VLAN does not exist. Creating vlan 10
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/6
 S1(config-if)#switchport mode access
@@ -59,7 +58,6 @@ S1(config-if)#exit
 S1(config)#interface fastEthernet 0/9
 S1(config-if)#switchport mode access
 S1(config-if)#switchport access vlan 20
-% Access VLAN does not exist. Creating vlan 20
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/10
 S1(config-if)#switchport mode access
@@ -76,7 +74,6 @@ S1(config-if)#exit
 S1(config)#interface fastEthernet 0/13
 S1(config-if)#switchport mode access
 S1(config-if)#switchport access vlan 30
-% Access VLAN does not exist. Creating vlan 30
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/14
 S1(config-if)#switchport mode access
@@ -93,7 +90,6 @@ S1(config-if)#exit
 S1(config)#interface fastEthernet 0/17
 S1(config-if)#switchport mode access
 S1(config-if)#switchport access vlan 40
-% Access VLAN does not exist. Creating vlan 40
 S1(config-if)#exit
 S1(config)#interface fastEthernet 0/18
 S1(config-if)#switchport mode access

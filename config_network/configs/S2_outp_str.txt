@@ -24,14 +24,16 @@ S2(config-if)#ip address 192.168.0.145 255.255.255.240
 S2(config-if)#no shutdown
 S2(config-if)#exit
 S2(config)#interface fastEthernet 0/1
+S2(config-if)#switchport trunk encapsulation dot1q
 S2(config-if)#switchport mode trunk
-Command rejected: An interface whose trunk encapsulation is "Auto" can not be configured to "trunk" mode.
-S2(config-if)#switchport trunk allowed vlan 10,20,30,40
+S2(config-if)#switchport trunk native vlan 1
+S2(config-if)#switchport trunk allowed vlan 1,10,20,30,40
 S2(config-if)#exit
 S2(config)#interface fastEthernet 0/2
+S2(config-if)#switchport trunk encapsulation dot1q
 S2(config-if)#switchport mode trunk
-Command rejected: An interface whose trunk encapsulation is "Auto" can not be configured to "trunk" mode.
-S2(config-if)#switchport trunk allowed vlan 10,20,30,40
+S2(config-if)#switchport trunk native vlan 1
+S2(config-if)#switchport trunk allowed vlan 1,10,20,30,40
 S2(config-if)#exit
 S2(config)#interface fastEthernet 0/3
 S2(config-if)#exit

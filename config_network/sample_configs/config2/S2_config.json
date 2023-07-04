@@ -2,6 +2,7 @@
     "connection_data":{
         "device":"cisco_switch",
         "device_type":"cisco_ios",
+        "fast_cli":false,
         "ip_address":"192.168.0.81",
         "port":"22",
         "username":"boson",
@@ -117,13 +118,13 @@
                 "switchport trunk encapsulation dot1q",
                 "switchport mode trunk",
                 "switchport trunk native vlan 1",
-                "switchport trunk allowed vlan 10,20,30,40"
+                "switchport trunk allowed vlan 1,10,20,30,40"
             ],
             "f0/2":[
                 "switchport trunk encapsulation dot1q",
                 "switchport mode trunk",
                 "switchport trunk native vlan 1",
-                "switchport trunk allowed vlan 10,20,30,40"
+                "switchport trunk allowed vlan 1,10,20,30,40"
             ]
         }
     },
