@@ -20,5 +20,4 @@ def config_device(conn_data, config_string):
 
         config_set = config_string.split("\n")
         output = ch.send_config_set(config_set)
-        print(output)
         return output

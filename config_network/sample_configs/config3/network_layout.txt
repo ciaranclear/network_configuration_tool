@@ -77,3 +77,28 @@ R3	F0/0		192.168.0.165	255.255.255.252
 * username = boson
 * password = boson
 
+
+######## VLAN ACCESS PORTS #########
+
+S1      vlan1           
+        vlan10          F0/5-F0/9
+        vlan20          F0/10-F0/14
+        vlan30          F0/15-F0/19
+        vlan40          F0/20-F0/24
+
+S2      vlan1
+        vlan10          F0/5-F0/9
+        vlan20          F0/10-F0/14
+        vlan30          F0/15-F0/19
+        vlan40          F0/20-F0/24
+
+######## VLAN TRUNK PORTS ##########
+
+S1      vlan 1,10,20,30,40      F0/1
+
+S2      vlan 1,10,20,30,40      F0/1
+
+
+######## ADDED PROTOCOLS ##########
+
+* port security on S1 and S2 f0/5-f0/24

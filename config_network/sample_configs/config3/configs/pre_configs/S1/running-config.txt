@@ -1,0 +1,197 @@
+Building configuration...
+
+Current configuration : 3980 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname S1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+username boson privilege 15 password 0 boson
+no aaa new-model
+system mtu routing 1500
+vtp mode transparent
+ip subnet-zero
+ip domain-name cisco.com
+ip name-server 192.168.0.2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 10,20 priority 24576
+spanning-tree vlan 30,40 priority 28672
+!
+vlan internal allocation policy ascending
+!
+vlan 10,20,30,40 
+!
+ip ssh version 2
+!
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,10,20,30,40
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,10,20,30,40
+ switchport mode trunk
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/6
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/7
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/9
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/10
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/11
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/12
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/13
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/14
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/15
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/16
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/17
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/18
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/19
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/20
+ switchport access vlan 40
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/21
+ switchport access vlan 40
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/22
+ switchport access vlan 40
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/23
+ switchport access vlan 40
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface FastEthernet0/24
+ switchport access vlan 40
+ switchport mode access
+ switchport port-security mac-address sticky
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.0.1 255.255.255.240
+!
+interface Vlan10
+ ip address 192.168.0.97 255.255.255.240
+!
+interface Vlan20
+ ip address 192.168.0.113 255.255.255.240
+!
+interface Vlan30
+ ip address 192.168.0.129 255.255.255.240
+!
+interface Vlan40
+ ip address 192.168.0.145 255.255.255.240
+!
+ip default-gateway 192.168.0.2
+ip classless
+ip http server
+ip http secure-server
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end
+
