@@ -1,0 +1,159 @@
+Building configuration...
+
+Current configuration : 3279 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname S2
+!
+boot-start-marker
+boot-end-marker
+!
+no logging console
+!
+username boson privilege 15 password 0 boson
+no aaa new-model
+system mtu routing 1500
+vtp mode transparent
+ip subnet-zero
+ip domain-name cisco.com
+ip name-server 192.168.5.2
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3118233600
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3118233600
+ revocation-check none
+ rsakeypair TP-self-signed-3118233600
+!
+!
+crypto pki certificate chain TP-self-signed-3118233600
+ certificate self-signed 01
+  30820244 308201AD A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33313138 32333336 3030301E 170D3933 30333031 30303031 
+  30395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 31313832 
+  33333630 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100C1A7 A556E55C FE2BFF6D EA930C18 05A2178F C48A7ADE 5408FFCE 89BBF71F 
+  28D8D012 73FDD9E5 3BB3E9E5 F375C738 B902D456 0E8572DB BDE484A1 851555AF 
+  31D705BD 065F8EF1 4A2DD0A6 53EC3D1A E12D5039 B6CF3237 260D1282 3E4BF422 
+  A8AB832D 44081A47 1FEE0ECC DF792CDC 45C988FF 04E0E299 1EDE800A E3BEF30E 
+  F2FF0203 010001A3 6C306A30 0F060355 1D130101 FF040530 030101FF 30170603 
+  551D1104 10300E82 0C53322E 63697363 6F2E636F 6D301F06 03551D23 04183016 
+  801439F5 2411743F FAAADB86 085D5860 0A956F7B 6790301D 0603551D 0E041604 
+  1439F524 11743FFA AADB8608 5D58600A 956F7B67 90300D06 092A8648 86F70D01 
+  01040500 03818100 012E51E4 A44ADAA6 9C34B837 E4CD4475 CA95E57D 66AADDD4 
+  8CEC9372 E00202A2 D04BE04D 255FEC9F D5FD0B97 90C9876E 97633B49 7773BC62 
+  6228A0E9 31935E5B 0F2AF4AB B0D48E96 2E7FB9AC 085DE825 3E596B81 AC40946B 
+  E6572F5F 90B26258 7BEC1538 2A4D9739 19A245D8 D43D7CAB 79A12007 33529815 
+  9B943C59 534F5F38
+  quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name group2
+!
+vlan 3
+ name group3
+!
+vlan 4
+ name group4
+!
+vlan 5
+ name group5
+!
+vlan 6
+ name group6
+!
+vlan 10,20,30,40 
+!
+ip ssh version 2
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.5.1 255.255.255.0
+!
+ip default-gateway 192.168.5.2
+ip classless
+ip http server
+ip http secure-server
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ login local
+line vty 5 15
+ login
+!
+end
+
