@@ -1,0 +1,159 @@
+ip default-gateway 192.168.5.2
+vtp mode transparent
+ip domain-lookup
+ip name-server 192.168.10.2
+ntp server 192.168.20.2
+ntp authenticate
+ntp authentication-key 1 md5 boson
+ntp trusted-key 1
+ip dhcp snooping
+ip dhcp snooping vlan 10,20,30,40
+ip arp inspection vlan 10,20,30,40
+interface fastEthernet 0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+interface fastEthernet 0/2
+exit
+interface fastEthernet 0/3
+exit
+interface fastEthernet 0/4
+exit
+interface fastEthernet 0/5
+switchport mode access
+switchport access vlan 10
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/6
+switchport mode access
+switchport access vlan 10
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/7
+switchport mode access
+switchport access vlan 10
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/8
+switchport mode access
+switchport access vlan 10
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/9
+switchport mode access
+switchport access vlan 10
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 20
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/11
+switchport mode access
+switchport access vlan 20
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/12
+switchport mode access
+switchport access vlan 20
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/13
+switchport mode access
+switchport access vlan 20
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/14
+switchport mode access
+switchport access vlan 20
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/15
+switchport mode access
+switchport access vlan 30
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/16
+switchport mode access
+switchport access vlan 30
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/17
+switchport mode access
+switchport access vlan 30
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/18
+switchport mode access
+switchport access vlan 30
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/19
+switchport mode access
+switchport access vlan 30
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/20
+switchport mode access
+switchport access vlan 40
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/21
+switchport mode access
+switchport access vlan 40
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/22
+switchport mode access
+switchport access vlan 40
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/23
+switchport mode access
+switchport access vlan 40
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface fastEthernet 0/24
+switchport mode access
+switchport access vlan 40
+no ip dhcp snooping trust
+no ip arp inspection trust
+exit
+interface vlan 1
+exit
+interface vlan 10
+ip address 192.168.6.1 255.255.255.0
+no shutdown
+exit
+interface vlan 20
+ip address 192.168.7.1 255.255.255.0
+no shutdown
+exit
+interface vlan 30
+ip address 192.168.8.1 255.255.255.0
+no shutdown
+exit
+interface vlan 40
+ip address 192.168.9.1 255.255.255.0
+no shutdown
+exit

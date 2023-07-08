@@ -1,0 +1,101 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#router ospf 1
+R3(config-router)#network 192.168.6.0 0.0.0.255 area 0
+R3(config-router)#network 192.168.7.0 0.0.0.255 area 0
+R3(config-router)#network 192.168.8.0 0.0.0.255 area 0
+R3(config-router)#network 192.168.9.0 0.0.0.255 area 0
+R3(config-router)#exit
+R3(config)#ip dhcp pool pool_6
+R3(dhcp-config)#network 192.168.6.0 255.255.255.0
+R3(dhcp-config)#default-router 192.168.5.2
+R3(dhcp-config)#exit
+R3(config)#ip dhcp excluded-address 192.168.6.1
+R3(config)#ip dhcp excluded-address 192.168.6.2
+R3(config)#ip dhcp pool pool_7
+R3(dhcp-config)#network 192.168.7.0 255.255.255.0
+R3(dhcp-config)#default-router 192.168.5.2
+R3(dhcp-config)#exit
+R3(config)#ip dhcp excluded-address 192.168.7.1
+R3(config)#ip dhcp excluded-address 192.168.7.2
+R3(config)#ip dhcp pool pool_8
+R3(dhcp-config)#network 192.168.8.0 255.255.255.0
+R3(dhcp-config)#default-router 192.168.5.2
+R3(dhcp-config)#exit
+R3(config)#ip dhcp excluded-address 192.168.8.1
+R3(config)#ip dhcp excluded-address 192.168.8.2
+R3(config)#ip dhcp pool pool_9
+R3(dhcp-config)#network 192.168.9.0 255.255.255.0
+R3(dhcp-config)#default-router 192.168.5.2
+R3(dhcp-config)#exit
+R3(config)#ip dhcp excluded-address 192.168.9.1
+R3(config)#ip dhcp excluded-address 192.168.9.2
+R3(config)#access-list 1 permit 192.168.0.0 0.0.0.255
+R3(config)#access-list 2 permit 192.168.1.0 0.0.0.255
+R3(config)#access-list 3 permit 192.168.2.0 0.0.0.255
+R3(config)#access-list 4 permit 192.168.3.0 0.0.0.255
+R3(config)#access-list 5 permit 192.168.4.0 0.0.0.255
+R3(config)#ip access-list extended 100
+R3(config-ext-nacl)#10 permit ip 192.168.5.0 0.0.0.255 192.168.0.0 0.0.0.255
+% Duplicate sequence number
+R3(config-ext-nacl)#exit
+R3(config)#ip access-list extended 110
+R3(config-ext-nacl)#10 permit ip 192.168.6.0 0.0.0.255 192.168.1.0 0.0.0.255
+% Duplicate sequence number
+R3(config-ext-nacl)#exit
+R3(config)#ip access-list extended 120
+R3(config-ext-nacl)#10 permit ip 192.168.7.0 0.0.0.255 192.168.2.0 0.0.0.255
+% Duplicate sequence number
+R3(config-ext-nacl)#exit
+R3(config)#ip access-list extended 130
+R3(config-ext-nacl)#10 permit ip 192.168.8.0 0.0.0.255 192.168.3.0 0.0.0.255
+% Duplicate sequence number
+R3(config-ext-nacl)#exit
+R3(config)#ip access-list extended 140
+R3(config-ext-nacl)#10 permit ip 192.168.9.0 0.0.0.255 192.168.4.0 0.0.0.255
+% Duplicate sequence number
+R3(config-ext-nacl)#exit
+R3(config)#ntp server 192.168.20.2
+R3(config)#ntp authenticate
+R3(config)#ntp authentication-key 1 md5 boson
+R3(config)#ntp trusted-key 1
+R3(config)#interface fastEthernet 0/1
+R3(config-if)#exit
+R3(config)#interface fastEthernet 0/1.10
+R3(config-subif)#encapsulation dot1q 10
+R3(config-subif)#ip address 192.168.6.2 255.255.255.0
+R3(config-subif)#no shutdown
+R3(config-subif)#ip helper-address 192.168.5.2
+R3(config-subif)#ip access-group 110 in
+R3(config-subif)#ip access-group 2 out
+R3(config-subif)#exit
+R3(config)#interface fastEthernet 0/1.20
+R3(config-subif)#encapsulation dot1q 20
+R3(config-subif)#ip address 192.168.7.2 255.255.255.0
+R3(config-subif)#no shutdown
+R3(config-subif)#ip helper-address 192.168.5.2
+R3(config-subif)#ip access-group 120 in
+R3(config-subif)#ip access-group 3 out
+R3(config-subif)#exit
+R3(config)#interface fastEthernet 0/1.30
+R3(config-subif)#encapsulation dot1q 30
+R3(config-subif)#ip address 192.168.8.2 255.255.255.0
+R3(config-subif)#no shutdown
+R3(config-subif)#ip helper-address 192.168.5.2
+R3(config-subif)#ip access-group 130 in
+R3(config-subif)#ip access-group 4 out
+R3(config-subif)#exit
+R3(config)#interface fastEthernet 0/1.40
+R3(config-subif)#encapsulation dot1q 40
+R3(config-subif)#ip address 192.168.9.2 255.255.255.0
+R3(config-subif)#no shutdown
+R3(config-subif)#ip helper-address 192.168.5.2
+R3(config-subif)#ip access-group 140 in
+R3(config-subif)#ip access-group 5 out
+R3(config-subif)#exit
+R3(config)#interface loopback 1
+R3(config-if)#ip address 3.3.3.3 255.255.255.255
+R3(config-if)#exit
+R3(config)#
+R3(config)#end
+R3#

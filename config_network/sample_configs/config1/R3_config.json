@@ -3,7 +3,7 @@
         "device":"cisco_router",
         "device_type":"cisco_ios",
         "fast_cli":false,
-        "ip_address":"192.168.0.2",
+        "ip_address":"192.168.5.2",
         "port":"22",
         "username":"boson",
         "password":"boson",
@@ -11,10 +11,10 @@
     },
     "global":[
         "router ospf 1",
-        "network 192.168.1.0 0.0.0.255 area 0",
-        "network 192.168.2.0 0.0.0.255 area 0",
-        "network 192.168.3.0 0.0.0.255 area 0",
-        "network 192.168.4.0 0.0.0.255 area 0",
+        "network 192.168.6.0 0.0.0.255 area 0",
+        "network 192.168.7.0 0.0.0.255 area 0",
+        "network 192.168.8.0 0.0.0.255 area 0",
+        "network 192.168.9.0 0.0.0.255 area 0",
         "exit"
     ],
     "interfaces":{
@@ -27,7 +27,7 @@
             "iface_id":"0/1.10",
             "lines":[
                 "encapsulation dot1q 10",
-                "ip address 192.168.1.2 255.255.255.0",
+                "ip address 192.168.6.2 255.255.255.0",
                 "no shutdown"
             ]
         },
@@ -36,7 +36,7 @@
             "iface_id":"0/1.20",
             "lines":[
                 "encapsulation dot1q 20",
-                "ip address 192.168.2.2 255.255.255.0",
+                "ip address 192.168.7.2 255.255.255.0",
                 "no shutdown"
             ]
         },
@@ -45,7 +45,7 @@
             "iface_id":"0/1.30",
             "lines":[
                 "encapsulation dot1q 30",
-                "ip address 192.168.3.2 255.255.255.0",
+                "ip address 192.168.8.2 255.255.255.0",
                 "no shutdown"
             ]
         },
@@ -54,7 +54,7 @@
             "iface_id":"0/1.40",
             "lines":[
                 "encapsulation dot1q 40",
-                "ip address 192.168.4.2 255.255.255.0",
+                "ip address 192.168.9.2 255.255.255.0",
                 "no shutdown"
             ]
         },
@@ -62,73 +62,73 @@
             "iface_type":"loopback",
             "iface_id":"1",
             "lines":[
-                "ip address 1.1.1.1 255.255.255.255"
+                "ip address 3.3.3.3 255.255.255.255"
             ]
         }
     },
     "dhcp":{
         "global":[
-            "ip dhcp pool pool_1",
-            "network 192.168.1.0 255.255.255.0",
-            "default-router 192.168.0.2",
+            "ip dhcp pool pool_6",
+            "network 192.168.6.0 255.255.255.0",
+            "default-router 192.168.5.2",
             "exit",
-            "ip dhcp excluded-address 192.168.1.1",
-            "ip dhcp excluded-address 192.168.1.2",
-            "ip dhcp pool pool_2",
-            "network 192.168.2.0 255.255.255.0",
-            "default-router 192.168.0.2",
+            "ip dhcp excluded-address 192.168.6.1",
+            "ip dhcp excluded-address 192.168.6.2",
+            "ip dhcp pool pool_7",
+            "network 192.168.7.0 255.255.255.0",
+            "default-router 192.168.5.2",
             "exit",
-            "ip dhcp excluded-address 192.168.2.1",
-            "ip dhcp excluded-address 192.168.2.2",
-            "ip dhcp pool pool_3",
-            "network 192.168.3.0 255.255.255.0",
-            "default-router 192.168.0.2",
+            "ip dhcp excluded-address 192.168.7.1",
+            "ip dhcp excluded-address 192.168.7.2",
+            "ip dhcp pool pool_8",
+            "network 192.168.8.0 255.255.255.0",
+            "default-router 192.168.5.2",
             "exit",
-            "ip dhcp excluded-address 192.168.3.1",
-            "ip dhcp excluded-address 192.168.3.2",
-            "ip dhcp pool pool_4",
-            "network 192.168.4.0 255.255.255.0",
-            "default-router 192.168.0.2",
+            "ip dhcp excluded-address 192.168.8.1",
+            "ip dhcp excluded-address 192.168.8.2",
+            "ip dhcp pool pool_9",
+            "network 192.168.9.0 255.255.255.0",
+            "default-router 192.168.5.2",
             "exit",
-            "ip dhcp excluded-address 192.168.4.1",
-            "ip dhcp excluded-address 192.168.4.2"
+            "ip dhcp excluded-address 192.168.9.1",
+            "ip dhcp excluded-address 192.168.9.2"
         ],
         "interfaces":{
             "f0/1.10":[
-                "ip helper-address 192.168.0.2"
+                "ip helper-address 192.168.5.2"
             ],
             "f0/1.20":[
-                "ip helper-address 192.168.0.2"
+                "ip helper-address 192.168.5.2"
             ],
             "f0/1.30":[
-                "ip helper-address 192.168.0.2"
+                "ip helper-address 192.168.5.2"
             ],
             "f0/1.40":[
-                "ip helper-address 192.168.0.2"
+                "ip helper-address 192.168.5.2"
             ]
         }
     },
     "acls":{
         "global":[
-            "access-list 1 permit 192.168.5.0 0.0.0.255",
-            "access-list 2 permit 192.168.6.0 0.0.0.255",
-            "access-list 3 permit 192.168.7.0 0.0.0.255",
-            "access-list 4 permit 192.168.8.0 0.0.0.255",
-            "access-list 5 permit 192.168.9.0 0.0.0.255",
+            "access-list 1 permit 192.168.0.0 0.0.0.255",
+            "access-list 2 permit 192.168.1.0 0.0.0.255",
+            "access-list 3 permit 192.168.2.0 0.0.0.255",
+            "access-list 4 permit 192.168.3.0 0.0.0.255",
+            "access-list 5 permit 192.168.4.0 0.0.0.255",
             "ip access-list extended 100",
-            "10 permit ip 192.168.0.0 0.0.0.255 192.168.5.0 0.0.0.255",
+            "10 permit ip 192.168.5.0 0.0.0.255 192.168.0.0 0.0.0.255",
             "exit",
             "ip access-list extended 110",
-            "10 permit ip 192.168.1.0 0.0.0.255 192.168.6.0 0.0.0.255",
+            "10 permit ip 192.168.6.0 0.0.0.255 192.168.1.0 0.0.0.255",
             "exit",
             "ip access-list extended 120",
-            "10 permit ip 192.168.2.0 0.0.0.255 192.168.7.0 0.0.0.255",
+            "10 permit ip 192.168.7.0 0.0.0.255 192.168.2.0 0.0.0.255",
             "exit",
             "ip access-list extended 130",
-            "10 permit ip 192.168.3.0 0.0.0.255 192.168.8.0 0.0.0.255",
+            "10 permit ip 192.168.8.0 0.0.0.255 192.168.3.0 0.0.0.255",
             "exit",
             "ip access-list extended 140",
-            "10 permit ip 192.168.4.0 0.0.0.255 192.168.9.0 0.0.0.255",
+            "10 permit ip 192.168.9.0 0.0.0.255 192.168.4.0 0.0.0.255",
             "exit"
         ],
         "interfaces":{
@@ -155,7 +155,7 @@
     },
     "ntp":{
         "global":[
-            "ntp server 192.168.10.2",
+            "ntp server 192.168.20.2",
             "ntp authenticate",
             "ntp authentication-key 1 md5 boson",
             "ntp trusted-key 1"

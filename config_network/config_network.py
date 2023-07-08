@@ -48,12 +48,13 @@ def config_network(argv=None):
         config_data = get_config_data(filepath)
         config_string = get_config_string(config_data)
         # configure devices
-        print(f"CONFIGURING {device_name}")
         conn_data = config_data["connection_data"]
         # get initial configs
         initial_configs = get_initial_configs(conn_data, ["startup-config","running-config"])
         # configure device
+        print(f"CONFIGURING {device_name}")
         output = config_device(conn_data, config_string)
+        print(f"FINISHED CONFIGURING {device_name}")
         # save configs
 
         # if no output directory default to config directory
