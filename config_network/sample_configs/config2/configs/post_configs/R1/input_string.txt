@@ -1,0 +1,91 @@
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.2.0 0.0.0.255 area 0
+network 192.168.3.0 0.0.0.255 area 0
+network 192.168.4.0 0.0.0.255 area 0
+exit
+ip dhcp pool pool_1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.0.2
+exit
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.1.2
+ip dhcp pool pool_2
+network 192.168.2.0 255.255.255.0
+default-router 192.168.0.2
+exit
+ip dhcp excluded-address 192.168.2.1
+ip dhcp excluded-address 192.168.2.2
+ip dhcp pool pool_3
+network 192.168.3.0 255.255.255.0
+default-router 192.168.0.2
+exit
+ip dhcp excluded-address 192.168.3.1
+ip dhcp excluded-address 192.168.3.2
+ip dhcp pool pool_4
+network 192.168.4.0 255.255.255.0
+default-router 192.168.0.2
+exit
+ip dhcp excluded-address 192.168.4.1
+ip dhcp excluded-address 192.168.4.2
+access-list 1 permit 192.168.5.0 0.0.0.255
+access-list 2 permit 192.168.6.0 0.0.0.255
+access-list 3 permit 192.168.7.0 0.0.0.255
+access-list 4 permit 192.168.8.0 0.0.0.255
+access-list 5 permit 192.168.9.0 0.0.0.255
+ip access-list extended 100
+10 permit ip 192.168.0.0 0.0.0.255 192.168.5.0 0.0.0.255
+exit
+ip access-list extended 110
+10 permit ip 192.168.1.0 0.0.0.255 192.168.6.0 0.0.0.255
+exit
+ip access-list extended 120
+10 permit ip 192.168.2.0 0.0.0.255 192.168.7.0 0.0.0.255
+exit
+ip access-list extended 130
+10 permit ip 192.168.3.0 0.0.0.255 192.168.8.0 0.0.0.255
+exit
+ip access-list extended 140
+10 permit ip 192.168.4.0 0.0.0.255 192.168.9.0 0.0.0.255
+exit
+ntp server 192.168.10.2
+ntp authenticate
+ntp authentication-key 1 md5 boson
+ntp trusted-key 1
+interface fastEthernet 0/1
+exit
+interface fastEthernet 0/1.10
+encapsulation dot1q 10
+ip address 192.168.1.2 255.255.255.0
+no shutdown
+ip helper-address 192.168.0.2
+ip access-group 110 in
+ip access-group 2 out
+exit
+interface fastEthernet 0/1.20
+encapsulation dot1q 20
+ip address 192.168.2.2 255.255.255.0
+no shutdown
+ip helper-address 192.168.0.2
+ip access-group 120 in
+ip access-group 3 out
+exit
+interface fastEthernet 0/1.30
+encapsulation dot1q 30
+ip address 192.168.3.2 255.255.255.0
+no shutdown
+ip helper-address 192.168.0.2
+ip access-group 130 in
+ip access-group 4 out
+exit
+interface fastEthernet 0/1.40
+encapsulation dot1q 40
+ip address 192.168.4.2 255.255.255.0
+no shutdown
+ip helper-address 192.168.0.2
+ip access-group 140 in
+ip access-group 5 out
+exit
+interface loopback 1
+ip address 1.1.1.1 255.255.255.255
+exit

@@ -1,0 +1,193 @@
+{
+    "connection_data":{
+        "device":"cisco_router",
+        "device_type":"cisco_ios",
+        "fast_cli":false,
+        "ip_address":"192.168.0.2",
+        "port":"22",
+        "username":"boson",
+        "password":"boson",
+        "secret":null
+    },
+    "global":[
+        "router ospf 1",
+        "network 192.168.1.0 0.0.0.255 area 0",
+        "network 192.168.2.0 0.0.0.255 area 0",
+        "network 192.168.3.0 0.0.0.255 area 0",
+        "network 192.168.4.0 0.0.0.255 area 0",
+        "exit"
+    ],
+    "interfaces":{
+        "f0/1":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/1"
+        },
+        "f0/1.10":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/1.10",
+            "lines":[
+                "encapsulation dot1q 10",
+                "ip address 192.168.1.2 255.255.255.0",
+                "no shutdown"
+            ]
+        },
+        "f0/1.20":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/1.20",
+            "lines":[
+                "encapsulation dot1q 20",
+                "ip address 192.168.2.2 255.255.255.0",
+                "no shutdown"
+            ]
+        },
+        "f0/1.30":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/1.30",
+            "lines":[
+                "encapsulation dot1q 30",
+                "ip address 192.168.3.2 255.255.255.0",
+                "no shutdown"
+            ]
+        },
+        "f0/1.40":{
+            "iface_type":"fastEthernet",
+            "iface_id":"0/1.40",
+            "lines":[
+                "encapsulation dot1q 40",
+                "ip address 192.168.4.2 255.255.255.0",
+                "no shutdown"
+            ]
+        },
+        "loopback1":{
+            "iface_type":"loopback",
+            "iface_id":"1",
+            "lines":[
+                "ip address 1.1.1.1 255.255.255.255"
+            ]
+        }
+    },
+    "dhcp":{
+        "global":[
+            "ip dhcp pool pool_1",
+            "network 192.168.1.0 255.255.255.0",
+            "default-router 192.168.0.2",
+            "exit",
+            "ip dhcp excluded-address 192.168.1.1",
+            "ip dhcp excluded-address 192.168.1.2",
+            "ip dhcp pool pool_2",
+            "network 192.168.2.0 255.255.255.0",
+            "default-router 192.168.0.2",
+            "exit",
+            "ip dhcp excluded-address 192.168.2.1",
+            "ip dhcp excluded-address 192.168.2.2",
+            "ip dhcp pool pool_3",
+            "network 192.168.3.0 255.255.255.0",
+            "default-router 192.168.0.2",
+            "exit",
+            "ip dhcp excluded-address 192.168.3.1",
+            "ip dhcp excluded-address 192.168.3.2",
+            "ip dhcp pool pool_4",
+            "network 192.168.4.0 255.255.255.0",
+            "default-router 192.168.0.2",
+            "exit",
+            "ip dhcp excluded-address 192.168.4.1",
+            "ip dhcp excluded-address 192.168.4.2"
+        ],
+        "interfaces":{
+            "f0/1.10":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.10",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.20":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.20",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.30":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.30",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.40":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.40",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            }
+        }
+    },
+    "acls":{
+        "global":[
+            "access-list 1 permit 192.168.5.0 0.0.0.255",
+            "access-list 2 permit 192.168.6.0 0.0.0.255",
+            "access-list 3 permit 192.168.7.0 0.0.0.255",
+            "access-list 4 permit 192.168.8.0 0.0.0.255",
+            "access-list 5 permit 192.168.9.0 0.0.0.255",
+            "ip access-list extended 100",
+            "10 permit ip 192.168.0.0 0.0.0.255 192.168.5.0 0.0.0.255",
+            "exit",
+            "ip access-list extended 110",
+            "10 permit ip 192.168.1.0 0.0.0.255 192.168.6.0 0.0.0.255",
+            "exit",
+            "ip access-list extended 120",
+            "10 permit ip 192.168.2.0 0.0.0.255 192.168.7.0 0.0.0.255",
+            "exit",
+            "ip access-list extended 130",
+            "10 permit ip 192.168.3.0 0.0.0.255 192.168.8.0 0.0.0.255",
+            "exit",
+            "ip access-list extended 140",
+            "10 permit ip 192.168.4.0 0.0.0.255 192.168.9.0 0.0.0.255",
+            "exit"
+        ],
+        "interfaces":{
+            "f0/1.10":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.10",
+                "lines":[
+                    "ip access-group 110 in",
+                    "ip access-group 2 out"
+                ]
+            },
+            "f0/1.20":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.20",
+                "lines":[
+                    "ip access-group 120 in",
+                    "ip access-group 3 out"
+                ]
+            },
+            "f0/1.30":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.30",
+                "lines":[
+                    "ip access-group 130 in",
+                    "ip access-group 4 out"
+                ]
+            },
+            "f0/1.40":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.40",
+                "lines":[
+                    "ip access-group 140 in",
+                    "ip access-group 5 out"
+                ]
+            }
+        }
+    },
+    "ntp":{
+        "global":[
+            "ntp server 192.168.10.2",
+            "ntp authenticate",
+            "ntp authentication-key 1 md5 boson",
+            "ntp trusted-key 1"
+        ]
+    }
+}

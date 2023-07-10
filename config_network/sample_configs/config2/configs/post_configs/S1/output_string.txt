@@ -1,0 +1,165 @@
+configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#ip default-gateway 192.168.0.2
+S1(config)#vtp mode transparent
+Device mode already VTP TRANSPARENT.
+S1(config)#ip domain-lookup
+S1(config)#ip name-server 192.168.10.2
+S1(config)#ntp server 192.168.10.2
+S1(config)#ntp authenticate
+S1(config)#ntp authentication-key 1 md5 boson
+S1(config)#ntp trusted-key 1
+S1(config)#ip dhcp snooping
+S1(config)#ip dhcp snooping vlan 10,20,30,40
+S1(config)#ip arp inspection vlan 10,20,30,40
+S1(config)#interface vlan 10
+S1(config-if)#ip address 192.168.1.1 255.255.255.0
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 20
+S1(config-if)#ip address 192.168.2.1 255.255.255.0
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 30
+S1(config-if)#ip address 192.168.3.1 255.255.255.0
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface vlan 40
+S1(config-if)#ip address 192.168.4.1 255.255.255.0
+S1(config-if)#no shutdown
+S1(config-if)#exit
+S1(config)#interface fastethernet 0/1
+S1(config-if)#switchport trunk encapsulation dot1q
+S1(config-if)#switchport mode trunk
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/2
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/3
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/4
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/5
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 10
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/6
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 10
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/7
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 10
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/8
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 10
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/9
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 10
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/10
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 20
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/11
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 20
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/12
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 20
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/13
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 20
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/14
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 20
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/15
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 30
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/16
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 30
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/17
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 30
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/18
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 30
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/19
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 30
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/20
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 40
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/21
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 40
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/22
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 40
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/23
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 40
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface fastEthernet 0/24
+S1(config-if)#switchport mode access
+S1(config-if)#switchport access vlan 40
+S1(config-if)#no ip dhcp snooping trust
+S1(config-if)#no ip arp inspection trust
+S1(config-if)#exit
+S1(config)#interface vlan 1
+S1(config-if)#exit
+S1(config)#
+S1(config)#end
+S1#

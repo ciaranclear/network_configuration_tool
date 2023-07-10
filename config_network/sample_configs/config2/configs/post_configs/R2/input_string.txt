@@ -1,0 +1,15 @@
+router ospf 1
+exit
+ip domain-lookup
+ip name-server 192.168.10.2
+ip dns server
+ip host ciaran 192.168.0.3
+ip host mrak 192.168.0.4
+ip host mary 192.168.0.5
+ntp master 1
+ntp authenticate
+ntp authentication-key 1 md5 boson
+ntp trusted-key 1
+interface loopback 1
+ip address 2.2.2.2 255.255.255.255
+exit

@@ -5,7 +5,7 @@
 * check % does not appear at the beggining of any line in the output.
 """
 from netmiko import ConnectHandler
-import time
+
 
 def config_device(conn_data, config_string):
 
@@ -19,7 +19,7 @@ def config_device(conn_data, config_string):
                         secret = conn_data["secret"],
                         fast_cli = False,
                         read_timeout_override = 60,
-                        conn_timeout = 20,
+                        conn_timeout = 30,
                         device_type = conn_data["device_type"]) as ch:
         output = ch.send_config_set(config_set)
         ch.cleanup()
