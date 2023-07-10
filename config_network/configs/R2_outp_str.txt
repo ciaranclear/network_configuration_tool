@@ -1,5 +1,0 @@
-configure terminal
-Enter configuration commands, one per line.  End with CNTL/Z.
-R2(config)#
-R2(config)#end
-R2#

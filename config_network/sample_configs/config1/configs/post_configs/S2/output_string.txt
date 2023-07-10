@@ -12,7 +12,23 @@ S2(config)#ntp trusted-key 1
 S2(config)#ip dhcp snooping
 S2(config)#ip dhcp snooping vlan 10,20,30,40
 S2(config)#ip arp inspection vlan 10,20,30,40
-S2(config)#interface fastEthernet 0/1
+S2(config)#interface vlan 10
+S2(config-if)#ip address 192.168.6.1 255.255.255.0
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#interface vlan 20
+S2(config-if)#ip address 192.168.7.1 255.255.255.0
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#interface vlan 30
+S2(config-if)#ip address 192.168.8.1 255.255.255.0
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#interface vlan 40
+S2(config-if)#ip address 192.168.9.1 255.255.255.0
+S2(config-if)#no shutdown
+S2(config-if)#exit
+S2(config)#interface fastethernet 0/1
 S2(config-if)#switchport trunk encapsulation dot1q
 S2(config-if)#switchport mode trunk
 S2(config-if)#exit
@@ -143,22 +159,6 @@ S2(config-if)#no ip dhcp snooping trust
 S2(config-if)#no ip arp inspection trust
 S2(config-if)#exit
 S2(config)#interface vlan 1
-S2(config-if)#exit
-S2(config)#interface vlan 10
-S2(config-if)#ip address 192.168.6.1 255.255.255.0
-S2(config-if)#no shutdown
-S2(config-if)#exit
-S2(config)#interface vlan 20
-S2(config-if)#ip address 192.168.7.1 255.255.255.0
-S2(config-if)#no shutdown
-S2(config-if)#exit
-S2(config)#interface vlan 30
-S2(config-if)#ip address 192.168.8.1 255.255.255.0
-S2(config-if)#no shutdown
-S2(config-if)#exit
-S2(config)#interface vlan 40
-S2(config-if)#ip address 192.168.9.1 255.255.255.0
-S2(config-if)#no shutdown
 S2(config-if)#exit
 S2(config)#
 S2(config)#end

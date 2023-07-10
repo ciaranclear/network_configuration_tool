@@ -9,7 +9,23 @@ ntp trusted-key 1
 ip dhcp snooping
 ip dhcp snooping vlan 10,20,30,40
 ip arp inspection vlan 10,20,30,40
-interface fastEthernet 0/1
+interface vlan 10
+ip address 192.168.6.1 255.255.255.0
+no shutdown
+exit
+interface vlan 20
+ip address 192.168.7.1 255.255.255.0
+no shutdown
+exit
+interface vlan 30
+ip address 192.168.8.1 255.255.255.0
+no shutdown
+exit
+interface vlan 40
+ip address 192.168.9.1 255.255.255.0
+no shutdown
+exit
+interface fastethernet 0/1
 switchport trunk encapsulation dot1q
 switchport mode trunk
 exit
@@ -140,20 +156,4 @@ no ip dhcp snooping trust
 no ip arp inspection trust
 exit
 interface vlan 1
-exit
-interface vlan 10
-ip address 192.168.6.1 255.255.255.0
-no shutdown
-exit
-interface vlan 20
-ip address 192.168.7.1 255.255.255.0
-no shutdown
-exit
-interface vlan 30
-ip address 192.168.8.1 255.255.255.0
-no shutdown
-exit
-interface vlan 40
-ip address 192.168.9.1 255.255.255.0
-no shutdown
 exit

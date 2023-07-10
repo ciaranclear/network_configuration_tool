@@ -94,18 +94,34 @@
             "ip dhcp excluded-address 192.168.4.2"
         ],
         "interfaces":{
-            "f0/1.10":[
-                "ip helper-address 192.168.0.2"
-            ],
-            "f0/1.20":[
-                "ip helper-address 192.168.0.2"
-            ],
-            "f0/1.30":[
-                "ip helper-address 192.168.0.2"
-            ],
-            "f0/1.40":[
-                "ip helper-address 192.168.0.2"
-            ]
+            "f0/1.10":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.10",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.20":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.20",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.30":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.30",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            },
+            "f0/1.40":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.40",
+                "lines":[
+                    "ip helper-address 192.168.0.2"
+                ]
+            }
         }
     },
     "acls":{
@@ -132,25 +148,38 @@
             "exit"
         ],
         "interfaces":{
-            "f0/1":[
-                
-            ],
-            "f0/1.10":[
-                "ip access-group 110 in",
-                "ip access-group 2 out"
-            ],
-            "f0/1.20":[
-                "ip access-group 120 in",
-                "ip access-group 3 out"
-            ],
-            "f0/1.30":[
-                "ip access-group 130 in",
-                "ip access-group 4 out"
-            ],
-            "f0/1.40":[
-                "ip access-group 140 in",
-                "ip access-group 5 out"
-            ]
+            "f0/1.10":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.10",
+                "lines":[
+                    "ip access-group 110 in",
+                    "ip access-group 2 out"
+                ]
+            },
+            "f0/1.20":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.20",
+                "lines":[
+                    "ip access-group 120 in",
+                    "ip access-group 3 out"
+                ]
+            },
+            "f0/1.30":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.30",
+                "lines":[
+                    "ip access-group 130 in",
+                    "ip access-group 4 out"
+                ]
+            },
+            "f0/1.40":{
+                "iface_type":"fastethernet",
+                "iface_id":"0/1.40",
+                "lines":[
+                    "ip access-group 140 in",
+                    "ip access-group 5 out"
+                ]
+            }
         }
     },
     "ntp":{

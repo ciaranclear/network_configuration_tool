@@ -12,7 +12,6 @@ from valid_config import valid_config
 from get_config import get_config_string
 from get_initial_configs import get_initial_configs
 from config_device import config_device
-from save_configs import save_configs
 import argparse
 import json
 import os
@@ -125,6 +124,20 @@ def store_results(initial_settings, output_dict, args):
     }
     save_configs(device_post_dirpath, output_configs)
 """
+
+def save_configs(dirpath, configs):
+
+    # resolve the directory in this module.
+    # if no directory default directory will be in the configuration directory
+    # in save directory create a sub directory with the device name.
+    # save the initial configs
+    # save the input configuration string.
+    # save the output configuration string.
+
+    for cfg_name, cfg_string in configs.items():
+        fpath = os.path.join(dirpath, cfg_name)
+        with open(f"{fpath}.txt", "w") as f:
+            f.write(cfg_string)
     
 def config_network(argv=None):
 
