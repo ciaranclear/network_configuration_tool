@@ -12,6 +12,7 @@ from valid_config import valid_config
 from get_config import get_config_string
 from get_initial_configs import get_initial_configs
 from config_device import config_device
+import threading
 import argparse
 import json
 import os
@@ -74,9 +75,9 @@ def get_initial_settings(config_data):
     return initial_configs
 
 def configure_device(device_name, conn_data, config_string, output_dict):
-    
+    print(f"CONFIGURING {device_name}")
     output = config_device(conn_data, config_string)
-
+    print(f"FINISHED CONFIGURING {device_name}")
     output_dict[device_name] = output
 
 def display_errors(output_dict):
@@ -160,11 +161,17 @@ def config_network(argv=None):
 
     output_dict = {}
 
+    threads = []
+
     for device_name, config_string in config_strings.items():
-        print(f"CONFIGURING {device_name}")
         conn_data = valid_configs[device_name]["connection_data"]
-        configure_device(device_name, conn_data, config_string, output_dict)
-        print(f"FINISHED CONFIGURING {device_name}")
+        args_list = [device_name, conn_data, config_string, output_dict]
+        t = threading.Thread(target=configure_device, args=args_list)
+        t.start()
+        threads.append(t)
+
+    for t in threads:
+        t.join()
 
     display_errors(output_dict)
 
