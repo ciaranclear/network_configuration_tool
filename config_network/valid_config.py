@@ -103,26 +103,42 @@ def valid_interfaces(config_data, valid_data):
         valid_ifaces_dict = {}
 
         if not isinstance(interfaces, dict):
-            raise TypeError(f"")
+            raise TypeError(
+                f"{protocol} interfaces must be of type dict."
+            )
         
         for iface_name, interface in interfaces.items():
             if iface_name != "ranges":
                 if not isinstance(interface, dict):
-                    raise TypeError(f"")
+                    raise TypeError(
+                        f"{protocol} {iface_name} interface dict must be of type dict"
+                    )
                 if "iface_type" not in interface.keys():
-                    raise KeyError(f"")
+                    raise KeyError(
+                        f"{protocol} {iface_name} missing required entry 'iface_type'"
+                    )
                 if "iface_id" not in interface.keys():
-                    raise KeyError(f"")
+                    raise KeyError(
+                        f"{protocol} {iface_name} missing required entry 'iface_id'"
+                    )
                 if "mode" in interface.keys():
-                    if interface["mode"] not in ["before","after",None]:
-                        raise ValueError(f"")
+                    mode = interface["mode"]
+                    if mode not in ["before","after",None]:
+                        raise ValueError(
+                            f"{protocol} {iface_name} mode {mode} is not valid. "
+                            f"must be 'before','after' or None."
+                        )
                 if "lines" in interface.keys():
                     lines = interface["lines"]
                     if not isinstance(lines, list):
-                        raise TypeError(f"")
+                        raise TypeError(
+                            f"{protocol} {iface_name} lines entry must be of type list."
+                        )
                     for line in lines:
                         if not isinstance(line, str):
-                            raise TypeError(f"")
+                            raise TypeError(
+                                f"{protocol} {iface_name} lines must be list of type string."
+                            )
                     
                 valid_iface = {
                     "iface_type":interface["iface_type"],
@@ -178,23 +194,27 @@ def valid_ranges(config_data, valid_data):
         valid_ranges_list = []
 
         if not isinstance(ranges, list):
-            raise TypeError(f"")
+            raise TypeError(f"{protocol} ranges list must be of type list")
         
         for range_obj in ranges:
             if "iface_type" not in range_obj.keys():
-                raise KeyError(f"")
+                raise KeyError(f"{protocol} range dict missing required entry 'iface_type'")
             if "iface_name_prefix" not in range_obj.keys():
-                raise KeyError(f"")
+                raise KeyError(f"{protocol} range dict missing required entry 'iface_name_prefix'")
             if "mode" in range_obj.keys():
-                if range_obj["mode"] not in ["before","after",None]:
-                    raise ValueError(f"")
+                mode = range_obj["mode"]
+                if mode not in ["before","after",None]:
+                    raise ValueError(
+                        f"{protocol} range dict mode {mode} is not a valid mode. "
+                        f"must be 'before','after' or None"
+                    )
             if "lines" in range_obj.keys():
                 lines = range_obj["lines"]
                 if not isinstance(lines, list):
-                    raise TypeError(f"")
+                    raise TypeError(f"{protocol} range dict lines entry must be type list")
                 for line in lines:
                     if not isinstance(line, str):
-                        raise TypeError(f"")
+                        raise TypeError(f"{protocol} range dict lines must be list of type string")
                     
             valid_range_obj = {
                 "iface_type":range_obj["iface_type"],

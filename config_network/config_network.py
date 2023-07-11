@@ -46,8 +46,11 @@ def get_valid_config_data(config_data_dict):
     valid_config_data = {}
     
     for device_name, config_data in config_data_dict.items():
-        config_data = valid_config(config_data)
-        valid_config_data[device_name] = config_data
+        try:
+            config_data = valid_config(config_data)
+            valid_config_data[device_name] = config_data
+        except Exception as e:
+            raise Exception(f"{device_name} {e.__str__()}")
 
     return valid_config_data
 
