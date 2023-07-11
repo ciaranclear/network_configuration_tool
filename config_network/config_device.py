@@ -18,8 +18,8 @@ def config_device(conn_data, config_string):
                         password = conn_data["password"],
                         secret = conn_data["secret"],
                         fast_cli = False,
-                        read_timeout_override = 60,
-                        conn_timeout = 30,
+                        read_timeout_override = 90,
+                        conn_timeout = 60,
                         device_type = conn_data["device_type"]) as ch:
         output = ch.send_config_set(config_set)
         ch.cleanup()

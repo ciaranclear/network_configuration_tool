@@ -65,7 +65,7 @@ def get_initial_settings(config_data):
     
     initial_configs = {}
 
-    commands = ["show run", "show start"]
+    commands = ["run", "start"]
 
     for device_name, config in config_data.items():
         conn_data = config["connection_data"]
@@ -78,12 +78,15 @@ def configure_device(device_name, conn_data, config_string, output_dict):
     print(f"CONFIGURING {device_name}")
     output = config_device(conn_data, config_string)
     print(f"FINISHED CONFIGURING {device_name}")
-    output_dict[device_name] = output
+    output_dict[device_name] = {
+        "input_str":config_string,
+        "output_str":output
+    }
 
 def display_errors(output_dict):
     
     for device_name, output in output_dict.items():
-        lines = output.split("\n")
+        lines = output["output_str"].split("\n")
 
         for i, line in enumerate(lines):
             if len(line) != 0 and line[0] == "%":
@@ -91,54 +94,36 @@ def display_errors(output_dict):
                 print(lines[i-1])
                 print(line)
 
-"""
 def store_results(initial_settings, output_dict, args):
-    # if no output directory default to config directory
-    dirpath = os.path.dirname(args.inventory_filename)
-    output_dir = args.output_directory or os.path.join(dirpath, "configs")
-    # inside output directory create a sub directory called configs
-    if not os.path.isdir(output_dir):
-        os.mkdir(output_dir)
-    # inside configs create a subdirectory pre_configs and post_configs
-    pre_dirpath = os.path.join(output_dir, "pre_configs")
-    if not os.path.isdir(pre_dirpath):
-        os.mkdir(pre_dirpath)
+    # make output directory if it does not exist.
+    # make sub directory for each device name.
+    # within each device directory create a pre and post directory.
+    # inside pre directory store the initial settings.
+    # in post directory store the device input configuration string and
+    # the output configuration string.
+    dirpath = args.output_directory or os.path.dirname(args.inventory_filename)
+    dirpath = os.path.join(dirpath, "configs")
+    os.mkdir(dirpath)
 
-    post_dirpath = os.path.join(output_dir, "post_configs")
-    if not os.path.isdir(post_dirpath):
-        os.mkdir(post_dirpath)
+    device_list = initial_settings.keys()
 
-    # in pre_configs and post_configs create sub directory for each device
-    device_pre_dirpath = os.path.join(pre_dirpath, device_name)
-    if not os.path.isdir(device_pre_dirpath):
-        os.mkdir(device_pre_dirpath)
+    for device_name in device_list:
+        device_directory = os.path.join(dirpath, device_name)
+        os.mkdir(device_directory)
+        pre_directory = os.path.join(device_directory, 'pre_config')
+        os.mkdir(pre_directory)
+        post_directory = os.path.join(device_directory, "post_config")
+        os.mkdir(post_directory)
+        initial_setting_dict = initial_settings[device_name]
+        for command, setting_str in initial_setting_dict.items():
+            filepath = os.path.join(pre_directory, f"{command}.txt")
+            with open(filepath, "w") as f:
+                f.write(setting_str)
 
-    device_post_dirpath = os.path.join(post_dirpath, device_name)
-    if not os.path.isdir(device_post_dirpath):
-        os.mkdir(device_post_dirpath)
-
-    # save the files to each devices directory
-    save_configs(device_pre_dirpath, initial_configs)
-    output_configs = {
-        "input_string":config_string,
-        "output_string":output
-    }
-    save_configs(device_post_dirpath, output_configs)
-"""
-
-def save_configs(dirpath, configs):
-
-    # resolve the directory in this module.
-    # if no directory default directory will be in the configuration directory
-    # in save directory create a sub directory with the device name.
-    # save the initial configs
-    # save the input configuration string.
-    # save the output configuration string.
-
-    for cfg_name, cfg_string in configs.items():
-        fpath = os.path.join(dirpath, cfg_name)
-        with open(f"{fpath}.txt", "w") as f:
-            f.write(cfg_string)
+        for k, v in output_dict[device_name].items():
+            filepath = os.path.join(post_directory, f"{k}.txt")
+            with open(filepath, "w") as f:
+                f.write(v)
     
 def config_network(argv=None):
 
@@ -175,7 +160,7 @@ def config_network(argv=None):
 
     display_errors(output_dict)
 
-    #store_results(initial_settings, output_dict, args)
+    store_results(initial_settings, output_dict, args)
 
 if __name__ == "__main__":
     config_network()
